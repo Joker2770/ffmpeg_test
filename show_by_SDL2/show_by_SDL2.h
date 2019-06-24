@@ -2,7 +2,11 @@
 #define __FFMPEG_START_H__
 
 #include <stdio.h>
-
+//  [6/24/2019 yjt95]
+/*
+ *	ffmpeg 4.0.4+
+ *	sdl 2.0.8+
+ */
 #ifdef _WIN32
 //Windows
 extern "C"
@@ -40,6 +44,7 @@ SDL_Renderer *renderer;
 SDL_Texture *texture;
 
 Uint8 *yPlane, *uPlane, *vPlane;
+AVCodec* pCodec = NULL;
 AVFrame* pFrame = NULL;
 AVFrame* pFrameRGB = NULL;
 AVCodecContext* pCodecCtx = NULL;

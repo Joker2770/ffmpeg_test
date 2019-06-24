@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
 	}
 
 	av_register_all();
-
+	pFormatCtx = avformat_alloc_context();
 	//Open a video file
 	if (avformat_open_input(&pFormatCtx, argv[1], NULL, NULL) != 0) return -1;	//Could not open file
 
@@ -26,26 +26,24 @@ int main(int argc, char *argv[])
 	int VideoStream = -1;
 	for (i = 0; i < (int)pFormatCtx->nb_streams; i++)
 	{
-		if (pFormatCtx->streams[i]->codecpar->codec_type == AVMEDIA_TYPE_VIDEO)
+		if (pFormatCtx->streams[i]->codecpar->codec_type == AVMEDIA_TYPE_VIDEO && VideoStream < 0)
 		{
 			VideoStream = i;
 			break;
 		}
 	}
 
-	if (VideoStream == -1) return -1; // Didn't find a video stream
+	if (VideoStream == -1) return -1; //Didn't find a video stream
 
 	//Get a pointer to the codec context for the video stream
 	//pCodecCtx = pFormatCtx->streams[VideoStream]->codec;
-	pCodecCtx = avcodec_alloc_context3(NULL);
+	pCodecCtx = avcodec_alloc_context3(pCodec);
 	if (pCodecCtx == NULL)
 	{
 		printf("Could not allocate AVCodecContext\n");
 		return -1;
 	}
 	avcodec_parameters_to_context(pCodecCtx, pFormatCtx->streams[VideoStream]->codecpar);
-
-	AVCodec* pCodec = NULL;
 
 	//Find the decoder for the video stream
 	pCodec = avcodec_find_decoder(pCodecCtx->codec_id);
@@ -180,7 +178,7 @@ int main(int argc, char *argv[])
 				SDL_RenderCopy(renderer, texture, NULL, NULL);
 				SDL_RenderPresent(renderer);
 				//—” ±10ms
-				SDL_Delay(10);
+				//SDL_Delay(10);
 				//------------SDL-----------
 
 // 				// Save the frame to disk
@@ -305,6 +303,7 @@ void FreeSrc()
 	if (pCodecCtx != NULL)
 	{
 		avcodec_close(pCodecCtx);
+		av_free(pCodecCtx);
 		pCodecCtx = NULL;
 	}
 
@@ -312,6 +311,7 @@ void FreeSrc()
 	if (pFormatCtx != NULL)
 	{
 		avformat_close_input(&pFormatCtx);
+		avformat_free_context(pFormatCtx);
 		pFormatCtx = NULL;
 	}
 	printf("Free end\n");
