@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ffmpeg_start", "ffmpeg_star
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "show_by_SDL2", "show_by_SDL2\show_by_SDL2.vcxproj", "{723D9C14-084B-422D-9593-A77A0B7B49D5}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Playing_Sound", "Playing_Sound\Playing_Sound.vcxproj", "{6488523A-131A-4C3D-A22D-D01DE84D2DC7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{723D9C14-084B-422D-9593-A77A0B7B49D5}.Release|x64.Build.0 = Release|x64
 		{723D9C14-084B-422D-9593-A77A0B7B49D5}.Release|x86.ActiveCfg = Release|Win32
 		{723D9C14-084B-422D-9593-A77A0B7B49D5}.Release|x86.Build.0 = Release|Win32
+		{6488523A-131A-4C3D-A22D-D01DE84D2DC7}.Debug|x64.ActiveCfg = Debug|x64
+		{6488523A-131A-4C3D-A22D-D01DE84D2DC7}.Debug|x64.Build.0 = Debug|x64
+		{6488523A-131A-4C3D-A22D-D01DE84D2DC7}.Debug|x86.ActiveCfg = Debug|Win32
+		{6488523A-131A-4C3D-A22D-D01DE84D2DC7}.Debug|x86.Build.0 = Debug|Win32
+		{6488523A-131A-4C3D-A22D-D01DE84D2DC7}.Release|x64.ActiveCfg = Release|x64
+		{6488523A-131A-4C3D-A22D-D01DE84D2DC7}.Release|x64.Build.0 = Release|x64
+		{6488523A-131A-4C3D-A22D-D01DE84D2DC7}.Release|x86.ActiveCfg = Release|Win32
+		{6488523A-131A-4C3D-A22D-D01DE84D2DC7}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
